@@ -551,3 +551,133 @@ console.log(r[1] + r[2]);
 console.log("================ ex20 - swap-elements =================");
 // - Create a variable named `abc` with the following content: `['Arthur', 'Boe', 'Chloe']`
 // - Swap the first and the third element of `abc`
+let abc = ['Arthur', 'Boe', 'Chloe'];
+let tmp = abc[0];
+abc[0] = abc[2];
+abc[2] = tmp;
+console.log(abc);
+
+
+// ex22 - print-all
+console.log("================ ex22 - print-all =================");
+// - Create a variable named `af` with the following content: `[4, 5, 6, 7]`
+// - Log each the element of `af` to the console*
+// *hint: use a loop, console.log(af) won't cut it
+// - bonus for using the correct built in array method
+let af = [4, 5, 6, 7];
+af.map(function (e) {
+    console.log(e);
+});
+
+
+// ex23 - change-element
+console.log("================ ex23 - change-element =================");
+// - Create an array named `s` with the following content: `[1, 2, 3, 8, 5, 6]`
+// - Change the 8 to 4 with the `.map` method 
+// - Print the fourth element as a test
+let s = [1, 2, 3, 8, 5, 6];
+let new_s = s.map(function (e) {
+    if (e === 8) {
+        return 4;
+    } 
+    return e;
+});
+console.log(new_s[3]);
+
+
+// ex24 - increment-element
+console.log("================ ex24 - increment-element =================");
+// - Create a variable named `t` with the following content: `[1, 2, 3, 4, 5]`
+// - Increment the third element simply by accessing it
+// - Log the third element to the console
+let t = [1, 2, 3, 4, 5];
+t[2] += 1;
+console.log(t[2]);
+
+
+// ex25 - append-s-array
+console.log("================ ex25 - append-s-array =================");
+// - Create a variable named `animals`
+//   with the following content: `['dog', 'cat', 'kitten']`
+// - Add all elements an `'s'` at the end
+// - try to use built in functions instead of loops
+let animals = ['dog', 'cat', 'kitten'];
+let new_animals = animals.map(function (e) {
+    return e + "s'";
+});
+console.log(new_animals);
+
+// ex26 - double-items
+console.log("================ ex26 - double-items =================");
+// - Create an array variable named `ag` with the following content: `['Gin', 'Whiskey', 'Wine', 'Beer']`
+// - Double all the strings in the array, use a built in array method instead of a loop
+// It should print: ['GinGin', 'WhiskeyWhiskey', 'WineWine', 'BeerBeer']`
+let ag = ['Gin', 'Whiskey', 'Wine', 'Beer'];
+let new_ag = ag.map(function (e) {
+    return e + e;
+});
+console.log(new_ag);
+
+// ex27 - colors
+console.log("================ ex27 - colors =================");
+// - Create a two dimensional list
+//   which can contain the different shades of specified colors
+// - In `colors[0]` store the shades of green:
+//   `'lime', 'forest green', 'olive', 'pale green', 'spring green'`
+// - In `colors[1]` store the shades of red:
+//   `'orange red', 'red', 'tomato'`
+// - In `colors[2]` store the shades of pink:
+//   `'orchid', 'violet', 'pink', 'hot pink'`
+
+let greens = ['lime', 'forest green', 'olive', 'pale green', 'spring green'];
+let reds = ['orange red', 'red', 'tomato'];
+let pinks = ['orchid', 'violet', 'pink', 'hot pink'];
+const colors = [greens, reds, pinks];
+
+console.log(colors[0])
+console.log(colors[1])
+console.log(colors[2])
+
+// ex28 - sum-all
+console.log("================ ex28 - sum-all =================");
+// - Create a variable named `ai` with the following content: `[3, 4, 5, 6, 7]`
+// - Log the sum of the elements in `ai` to the console
+let ai = [3, 4, 5, 6, 7];
+let sum_ai = 0;
+ai.forEach(function (e) {
+    sum_ai += e;
+});
+console.log(sum_ai);
+
+// ex29 - diagonal-matrix
+console.log("================ ex29 - diagonal-matrix =================");
+// - Create (dynamically*) a two dimensional list
+//   with the following matrix**. Use a loop!
+//
+//   0 0 0 1
+//   0 0 1 0
+//   0 1 0 0
+//   1 0 0 0
+//
+// - Print this two dimensional list to the console
+//
+// * size should depend on a variable
+// ** Relax, a matrix is just like an array
+
+
+// ex30 - reverse
+console.log("================ ex30 - reverse =================");
+// - Create a variable named `aj`
+//   with the following content: `[3, 4, 5, 6, 7]`
+// - Reverse the order of the elements in `aj`
+// 		- do it with the built in method
+//		- do it with creating a new temp array and a loop
+// - Print the elements of the reversed `aj`
+let aj = [3, 4, 5, 6, 7];
+console.log(aj.reverse());
+let reverse_aj = [];
+for (let i = aj.length - 1, j = 0; i >= 0; i--, j++) {
+    reverse_aj[j] = aj[i];
+    console.log(reverse_aj[j], aj[i]);
+}
+console.log(reverse_aj);
