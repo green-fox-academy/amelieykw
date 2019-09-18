@@ -51,3 +51,24 @@ quote = quote.replace('It you', 'It takes longer than you');
 
 console.log(quote);
 console.log();
+
+console.log("================= Strings : ex 05 ==================")
+// Add "My todo:" to the beginning of the todoText
+// Add " - Download games" to the end of the todoText
+// Add " - Diablo" to the end of the todoText but with indention
+
+// Expected outpt:
+
+// My todo:
+//  - Buy milk
+//  - Download games
+//      - Diablo
+
+var todoText = " - Buy milk\n";
+todoText = "My todo:\n" + todoText;
+todoText += " - Download\n";
+todoText += "\t- Diablo\n";  
+
+console.log(todoText);
+console.log();
+
