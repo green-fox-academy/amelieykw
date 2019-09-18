@@ -411,6 +411,64 @@ console.log("================= callback : ex 01 ==================")
 // Write a program that prints apple after 3 seconds.
 setTimeout(() => {
     // print apple after 3 seconds
-    console.log('apple');
+    console.log('ex01 : apple');
 }, 3000)
 
+console.log("================= callback : ex 02 ==================")
+// Write a program that prints the following fruits:
+// apple -> immediately
+// pear -> after 1 seconds
+// melon -> after 3 seconds
+// grapes -> after 5 seconds
+function printAfterSeconds () {
+    console.log('ex02 : apple');
+    setTimeout(() => {
+        console.log('pear');
+    }, 1000)
+    setTimeout(() => {
+        console.log('melon');
+    }, 3000)
+    setTimeout(() => {
+        console.log('grapes');
+    }, 5000)
+}
+printAfterSeconds();
+
+console.log("================= callback : ex 03 ==================")
+const mapWith = (array, callback) => {
+    let output = [];
+    
+    // The mapWith() function should iterate over the given array and call the callback function on every element.
+    // It stores the callback return values in the output.
+    // The mapWith() should return with the output array.
+    output = array.map(callback);
+    return output;
+}
+  
+const addOne = (number) => {
+    return number + 1;
+}
+  
+// Exercise 1:
+  
+console.log(mapWith([1, 2, 3], addOne));
+//expected result: [2, 3, 4]
+  
+// Exercise 2:
+  
+// Create a callback function which removes every second character from a string
+const removeSecondLetter = (array) => {
+    let newElet = '';
+    for (let i = 0; i < array.length;i++) {
+        if (i == 1) {
+            continue;
+        }
+        newElet += array.charAt(i);
+    }
+    return newElet;
+};
+
+const words = ['map', 'reduce', 'filter'];
+  
+console.log(mapWith(words, removeSecondLetter));
+// expected result: ['mp','rdc', 'fle']
