@@ -141,7 +141,6 @@ ISBN_entries.forEach(element => {
 // Red Panda and Moon Bear (ISBN: 978-1-60309-444-3)
 // The Lab (ISBN: 978-1-60309-461-0)
 
-
 // Remove the key-value pair with key 978-1-60309-444-3
 delete ISBN['978-1-60309-444-3'];
 // Remove the key-value pair with value The Lab
@@ -159,4 +158,124 @@ ISBN['978-1-60309-453-5'] = 'Why Did We Trust Him?';
 console.log(ISBN['478-0-61159-424-8'] == undefined ? false : true);
 // Print the value associated with key 978-1-60309-453-5
 console.log(ISBN['978-1-60309-453-5']);
+console.log();
+
+
+console.log("================= Data Structures : ex 03 ==================")
+// Telephone book
+// We are going to represent our contacts in a map where the keys are going to be strings and the values are going to be strings as well.
+
+// Create a map with the following key-value pairs.
+
+// Name (key)	Phone number (value)
+// William A. Lathan	405-709-1865
+// John K. Miller	402-247-8568
+// Hortensia E. Foster	606-481-6467
+// Amanda D. Newland	319-243-5613
+// Brooke P. Askew	307-687-2982
+let telephoneBook = {
+    'William A. Lathan': '405-709-1865',
+    'John K. Miller': '402-247-8568',
+    'Hortensia E. Foster': '606-481-6467',
+    'Amanda D. Newland': '319-243-5613',
+    'Brooke P. Askew': '307-687-2982'
+}
+// Create an application which solves the following problems.
+
+// What is John K. Miller's phone number?
+// Whose phone number is 307-687-2982?
+// Do we know Chris E. Myers' phone number?
+function getPhoneNumber (name) {
+    return telephoneBook[name];
+}
+function getName (phoneNumber) {
+    return Object.keys(telephoneBook).find(key => telephoneBook[key] == phoneNumber);
+}
+console.log(getPhoneNumber('John K. Miller'));
+console.log(getName('307-687-2982'));
+console.log(getPhoneNumber('Chris E. Myers'));
+console.log();
+
+console.log("================= Data Structures : ex 04 ==================")
+// Product database
+// We are going to represent our products in a map where the keys are strings representing the product's name and the values are numbers representing the product's price.
+
+// Create a map with the following key-value pairs.
+
+// Product name (key)	Price (value)
+// Eggs	200
+// Milk	200
+// Fish	400
+// Apples	150
+// Bread	50
+// Chicken	550
+let products = {
+    'Eggs': 200,
+    'Milk': 200,
+    'Fish': 400,
+    'Apples': 150,
+    'Bread': 50,
+    'Chicken': 550
+}
+// Create an application which solves the following problems.
+
+// How much is the fish?
+function getPrice (product) {
+    return products[product];
+}
+console.log(getPrice('Fish'));
+
+// What is the most expensive product?
+function mostExpensiveProduct (products) {
+    let values = Object.values(products);
+    let max = 0;
+    values.forEach(function (element) {
+        if (element > max) {
+            max = element;
+        }
+    });
+    return Object.keys(products).find(key => products[key] == max);
+}
+console.log(mostExpensiveProduct(products));
+
+// What is the average price?
+function averagePrice (products) {
+    let sum = 0;
+    Object.values(products).forEach(function (element) {
+        sum += element;
+    });
+    return sum / Object.entries(products).length;
+}
+console.log(averagePrice(products));
+
+// How many products' price is below 300?
+function productPriceBelow300 (products) {
+    let num = 0;
+    Object.values(products).forEach(function (element) {
+        if (element < 300) {
+            num++;
+        }
+    });
+    return num;
+}
+console.log(productPriceBelow300(products));
+
+// Is there anything we can buy for exactly 125?
+function product125 (products) {
+    return Object.values(products).find(element => element == 125) == undefined ? false : true;
+}
+console.log(product125(products));
+
+// What is the cheapest product?
+function cheapestProduct (products) {
+    let values = Object.values(products);
+    let min = values[0];
+    values.forEach(function (element) {
+        if (element < min) {
+            min = element;
+        }
+    });
+    return Object.keys(products).find(key => products[key] == min);
+}
+console.log(cheapestProduct(products));
 console.log();
