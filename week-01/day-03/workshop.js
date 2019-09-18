@@ -391,7 +391,20 @@ console.log(sumPay(productsAndPrices, bob));
 // How much does Alice pay?
 console.log(sumPay(productsAndPrices, alice));
 // Who buys more Rice?
+console.log(bob['Rice'] > alice['Rice'] ? 'bob' : 'alice');
 // Who buys more Potato?
+console.log(bob['Potato'] > alice['Potato'] ? 'bob' : 'alice');
 // Who buys more different products?
+console.log(Object.entries(bob).length > Object.entries(alice).length ? 'bob' : 'alice');
 // Who buys more products? (piece)
+function totalPieces (shopingList) {
+    let sum = 0;
+    Object.values(shopingList).forEach(function (element) {
+        sum += element;
+    });
+    return sum;
+}
+console.log(totalPieces(bob) > totalPieces(alice) ? 'bob' : 'alice');
 console.log();
+
+
