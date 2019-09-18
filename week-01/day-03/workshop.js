@@ -407,4 +407,10 @@ function totalPieces (shopingList) {
 console.log(totalPieces(bob) > totalPieces(alice) ? 'bob' : 'alice');
 console.log();
 
+console.log("================= callback : ex 01 ==================")
+// Write a program that prints apple after 3 seconds.
+setTimeout(() => {
+    // print apple after 3 seconds
+    console.log('apple');
+}, 3000)
 
