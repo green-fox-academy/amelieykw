@@ -68,7 +68,7 @@ function rollTo6s() {
     while (!currentDice.every(element => element == 6)) { // need to reroll
         for (let i = 0; i < currentDice.length; i++) {
             if (currentDice[i] != 6) {
-                diceSet.reroll(i);
+                diceSet.reroll(i);  // reroll this no-6 position
             }
         }
         counter++;
@@ -77,4 +77,4 @@ function rollTo6s() {
 }
 
 console.log(rollTo6s(diceSet.getCurrent()));
-console.log(counter);
+console.log(counter); // how many times are needed to reroll until all 6s?
