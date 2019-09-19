@@ -472,3 +472,4 @@ const words = ['map', 'reduce', 'filter'];
   
 console.log(mapWith(words, removeSecondLetter));
 // expected result: ['mp','rdc', 'fle']
+
