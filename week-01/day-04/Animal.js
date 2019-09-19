@@ -16,6 +16,10 @@ class Animal {
         this.thirst = thirst;
     }
 
+    get hunger() {
+        return this.hunger;
+    }
+
     eat() {
         this.hunger--;
     }
@@ -29,3 +33,5 @@ class Animal {
         this.drink++;
     }
 }
+
+module.exports = Animal;
