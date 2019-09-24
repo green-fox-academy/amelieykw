@@ -2,6 +2,7 @@
 
 import { TreeNode } from './TreeNode';
 import { StackNode } from './StackNode';
+import { QueueNode } from './QueueNode';
 
 interface Tree {
     empty(): boolean;
@@ -33,14 +34,6 @@ class BinaryTree implements Tree {
         //     this._lheight = this.height(this._root)
         // }
     }
-
-    // private height(root: TreeNode): number {
-    //     // corner case
-    //     if (this._root == null) {
-    //         return 0;
-    //     }
-    //     return Math.max(this.height(this._root.lchild), this.height(this._root.rchild)) + 1;
-    // }
 
     public remove(value: string): void {
 
@@ -77,29 +70,53 @@ class BinaryTree implements Tree {
         if (this._root == null || this._root.value == value) {
             return this._root;
         }
-        // pre-order traversal
+        // in-order traversal
         let stack = new StackNode();
         let current = this._root;
-        while (current != null) {
-            if (current.value == value) {
-                return current;
-            }
-            stack.push(current);
-            current = current.lchild;
-        }
-        while (!stack.empty()) {
-            let top = stack.pop();
-            if (top.rchild != null) {
-                stack.push(top.rchild);
-                top = top.rchild;
-                while (top != null) {
-                    if (top.value == value) {
-                        return top;
-                    }
-                    stack.push(top);
-                    top = top.lchild;    
+        while (current != null || !stack.empty()) {
+            // try to go left first till the leaf, and add all the left child to stack
+            // all the left childs added to stack haven't been traversed
+            if (current != null) {
+                stack.push(current);
+                current = current.lchild;
+            } else { // arrive down to the next level of the leaf
+                current = stack.pop(); // return the previous level - the leaf
+                if (current.value == value) {
+                    return current;
                 }
-            }   
+                current = current.rchild;
+            }
+        }
+        return null;
+    }
+
+
+    // Iterative method: by using stack
+    // Time: O(3n) = O(n) - traverse each node
+    // Space: O(n) worst time
+    public breathFirstSearch(value: string) : TreeNode {
+        // corner case
+        if (this._root == null || this._root.value == value) {
+            return this._root;
+        }
+        // pre-order traversal
+        let queue = new QueueNode();
+        queue.add(this._root);
+        while (!queue.empty()) {
+            // For each node: Time: O(3)
+            // 1. poll from stack - O(1)
+            // 2. offer into stack - O(1)
+            // 3. add to preorder list - O(1)
+            let head = queue.remove();
+            if (head.value == value) {
+                return head;
+            }
+            if (head.lchild != null) {
+                queue.add(head.lchild);
+            } 
+            if (head.rchild != null) {
+                queue.add(head.rchild);
+            }
         }
         return null;
     }
