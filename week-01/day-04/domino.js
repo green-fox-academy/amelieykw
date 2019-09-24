@@ -1,19 +1,29 @@
-class Domino {
-    constructor(valueA, valueB) {
-      this.values = [valueA, valueB];
+'use strict';
+exports.__esModule = true;
+var Domino = /** @class */ (function () {
+    function Domino(valueA, valueB) {
+        this.values = [valueA, valueB];
     }
-
-    get valueA() {
-      return this.values[0];
-    }
-
-    get valueB() {
-      return this.values[1];
-    }
-  
-    toString() {
-      return `[${this.values[0]}|${this.values[1]}]`;
-    }
-  }
-  
-  module.exports = Domino;
+    Object.defineProperty(Domino.prototype, "valueA", {
+        get: function () {
+            return this.values[0];
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Domino.prototype, "valueB", {
+        get: function () {
+            return this.values[1];
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Domino.prototype.toString = function () {
+        return "[" + this.values[0] + "|" + this.values[1] + "]";
+    };
+    Domino.prototype.printAllFields = function () {
+        console.log("Inside printAllFields method.");
+    };
+    return Domino;
+}());
+exports.Domino = Domino;
