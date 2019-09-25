@@ -8,39 +8,48 @@ function MergeSort(input: number[]) : number[] {
     if (input.length <= 1) {
         return input;
     }
+
+    // let mid = Math.floor(input.length / 2); 
+    // let left = input.slice(0, mid);
+    // let right = input.slice(mid);
+    // return combine(MergeSort(left), MergeSort(right));
     return merge(input, 0, input.length - 1);
 }
 
 function merge(input: number[], start: number, end: number) : number[] {
-    // corner case 
-    if (start == end) {
+    if (input.length <= 1) {
         return input;
     }
-    // 0. find the mid
-    let mid: number = (input.length - 1) / 2 + 1;
-    // 1. merge left half 
-    let left = merge(input, 0, mid);
-    // 2. merge right half
-    let right = merge(input, mid + 1, end);
-    // 3. combine these two halves 
-    return combine(left, right);
+
+    let mid = Math.floor(input.length / 2); 
+    let left = input.slice(0, mid);
+    let right = input.slice(mid);
+
+    let mergeLeft = merge(left, start, mid); 
+    let mergeRight = merge(right, mid + 1, end); 
+    return combine(mergeLeft, mergeRight);
 }
 
 function combine(left: number[], right: number[]) : number[] {
     // result to return
     let result: number[] = [];
-    let i = 0, l = 0, r = 0;
-    while (l < left.length && r <  right.length) {
-        result[i] = (left[l] < right[r]) ? left[l++] : right[r++];
+    let l = 0, r = 0;
+    while (l < left.length && r < right.length) {
+        if (left[l] < right[r]) {
+            result.push(left[l++]);
+        } else {
+            result.push(right[r++]);
+        }
     }
     if (l < left.length) {
-        result[i++] = left[l++];
+        result.push(left[l++]);
     } 
     if (r < right.length) {
-        result[i++] = right[r++];
+        result.push(right[r++]);
     }
     return result;
 }
+
 
 // test cases
 let undefinedArray = undefined;
@@ -55,3 +64,11 @@ let arrayWithDuplicationSorted = [2, 1, 3, 2, 2, 2, 8];
 
 // test
 console.log(MergeSort(undefinedArray));
+console.log(MergeSort(emptyArray));
+console.log(MergeSort(oneEletArray));
+console.log(MergeSort(twoEletArrayEqual));
+console.log(MergeSort(twoEletArrayNoEqual));
+console.log(MergeSort(unsortedArray));
+console.log(MergeSort(partialUnsortedArray));
+console.log(MergeSort(arrayWithDuplication));
+console.log(MergeSort(arrayWithDuplicationSorted));
