@@ -15,9 +15,7 @@ function print_board(rowNb: number, colNb: number): string[][] {
     }
     return result;
 }
-// test function print_board
-let board = print_board(9, 9);
-// console.log(board);
+
 
 /**
  * initiate the white board with data
@@ -37,31 +35,7 @@ function init_board(board: string[][], data: string[][]): void {
     }
 }
 
-// test function init_board
-let init_data: string[][] = [
-    ['0', '0', '6'],
-    ['0', '2', '5'],
-    ['0', '7', '9'],
-    ['1', '5', '7'],
-    ['1', '7', '2'],
-    ['2', '0', '1'],
-    ['3', '3', '9'],
-    ['3', '5', '8'],
-    ['4', '6', '5'],
-    ['5', '0', '4'],
-    ['5', '6', '1'],
-    ['5', '8', '6'],
-    ['6', '1', '8'],
-    ['6', '5', '3'],
-    ['7', '3', '5'],
-    ['7', '4', '1'],
-    ['8', '1', '2'],
-];
 
-// init board with initial data
-init_board(board, init_data);
-console.log("Before : ");
-console.log(board);
 
 /**
  * N-queue solution for each number in [1, 9]
@@ -75,6 +49,7 @@ console.log(board);
 function nQueueForEachNumber(board: string[][], dataToPutIntoBoard: string, onePossiblePosition: string[], totalResult: string[][]): void {
     // base case
     if (onePossiblePosition.length == board[0].length) {
+        // totalResult[0] = onePossiblePosition.concat([]);
         if (totalResult[0].length == 0) {
             totalResult[0] = onePossiblePosition.concat([]);
         }
@@ -84,9 +59,9 @@ function nQueueForEachNumber(board: string[][], dataToPutIntoBoard: string, oneP
     for (let i = 0; i < board[0].length; i++) { // opt. on each row 
         let dejaExistInRow = board[onePossiblePosition.length].indexOf(dataToPutIntoBoard);
         if (dejaExistInRow != -1 || valide(board, onePossiblePosition, i, onePossiblePosition.length, +dataToPutIntoBoard)) {
-            if (onePossiblePosition.length == 0 && dataToPutIntoBoard == '2') {
-                console.log(onePossiblePosition.length + "," + i + " = " + board[onePossiblePosition.length][i] + " #### " + valide(board, onePossiblePosition, i, onePossiblePosition.length, +dataToPutIntoBoard));
-            }
+            // if (onePossiblePosition.length == 0 && dataToPutIntoBoard == '2') {
+            //     console.log(onePossiblePosition.length + "," + i + " = " + board[onePossiblePosition.length][i] + " #### " + valide(board, onePossiblePosition, i, onePossiblePosition.length, +dataToPutIntoBoard));
+            // }
             if (dejaExistInRow != -1) {
                 onePossiblePosition.push(dejaExistInRow + '');
             } else {
@@ -125,8 +100,8 @@ function valide(board: string[][], onePossiblePosition: string[], indexOfColumn:
     return true;
 }
 
-function sudoku(board: string[][], dataToPutIntoBoard: string): void {
-    
+function sudoku(board: string[][], dataToPutIntoBoard: string): boolean {
+
     let totalResult: string[][] = [];
     let onePossiblePosition: string[] = [];
     totalResult[0] = [];
@@ -135,20 +110,89 @@ function sudoku(board: string[][], dataToPutIntoBoard: string): void {
     nQueueForEachNumber(board, dataToPutIntoBoard + '', onePossiblePosition, totalResult);
 
     let positions = totalResult[0];
-    
+    if (positions.length == 0) {
+        return false;
+    }
+
     console.log(dataToPutIntoBoard + '=>' + totalResult[0]);
 
     // modify the board with the positions of dataToPutIntoBoard
     for (let i = 0; i < positions.length; i++) {
-        console.log(i + ' | ' + positions[i]);
+        // console.log(i + ' | ' + positions[i]);
         board[i][+positions[i]] = dataToPutIntoBoard + '';
     }
+    return true;
 
-    console.log(board);
+    // console.log(board);
 }
 
 // test
-for (let i = 1; i <= board.length; i++) {
-    sudoku(board, i+'');
-}
+// test function print_board
+let board1 = print_board(9, 9);
+let board2 = print_board(9, 9);
+// console.log(board);
 
+console.log("Board 1 : ");
+// test function init_board
+let init_data: string[][] = [
+    ['0', '0', '6'],
+    ['0', '2', '5'],
+    ['0', '7', '9'],
+    ['1', '5', '7'],
+    ['1', '7', '2'],
+    ['2', '0', '1'],
+    ['3', '3', '9'],
+    ['3', '5', '8'],
+    ['4', '6', '5'],
+    ['5', '0', '4'],
+    ['5', '6', '1'],
+    ['5', '8', '6'],
+    ['6', '1', '8'],
+    ['6', '5', '3'],
+    ['7', '3', '5'],
+    ['7', '4', '1'],
+    ['8', '1', '2'],
+];
+
+// init board with initial data
+init_board(board1, init_data);
+console.log("Before : ");
+console.log(board1);
+
+console.time("board 1");
+for (let i = 1; i <= board1.length; i++) {
+    sudoku(board1, i + '');
+}
+console.timeEnd("board 1");
+console.log(board1);
+
+
+console.log("Board 2 : ");
+// test function init_board
+let init_data2: string[][] = [
+    ['0', '3', '9'],
+    ['0', '4', '3'],
+    ['2', '1', '2'],
+    ['2', '2', '4'],
+    ['3', '0', '3'],
+    ['3', '1', '9'],
+    ['4', '0', '7'],
+    ['4', '7', '6'],
+    ['5', '5', '5'],
+    ['5', '7', '1'],
+    ['6', '3', '8'],
+    ['6', '6', '9'],
+    ['6', '8', '7'],
+    ['7', '2', '5'],
+    ['7', '5', '4'],
+    ['7', '6', '8'],
+    ['8', '6', '3'],
+];
+// init board with initial data
+init_board(board2, init_data2);
+console.log("Before : ");
+console.log(board2);
+
+
+
+console.log(board2);
