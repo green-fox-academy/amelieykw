@@ -1,6 +1,6 @@
 'use strict';
 
-function MergeSort(input: number[]) : number[] {
+function MergeSort(input: number[]): number[] {
     // corner case
     if (input == undefined) {
         return input;
@@ -8,31 +8,32 @@ function MergeSort(input: number[]) : number[] {
     if (input.length <= 1) {
         return input;
     }
-
-    // let mid = Math.floor(input.length / 2); 
-    // let left = input.slice(0, mid);
-    // let right = input.slice(mid);
-    // return combine(MergeSort(left), MergeSort(right));
-    return merge(input, 0, input.length - 1);
+    return merge(input);
 }
 
-function merge(input: number[], start: number, end: number) : number[] {
-    if (input.length <= 1) {
+
+function merge(input: number[]): number[] {
+    console.log("input.length = " + (input.length - 1));
+    
+    if (input.length < 2) {
         return input;
     }
 
-    let mid = Math.floor(input.length / 2); 
-    let left = input.slice(0, mid);
+    let mid = Math.floor(input.length / 2);
+    let left = input.slice(0, input.length - 1);
     let right = input.slice(mid);
-
-    let mergeLeft = merge(left, start, mid); 
-    let mergeRight = merge(right, mid + 1, end); 
+    let mergeLeft = merge(left);
+    let mergeRight = merge(right);
+    // let mergeLeft = merge(input, start, mid); 
+    // let mergeRight = merge(input, mid + 1, end); 
     return combine(mergeLeft, mergeRight);
 }
 
-function combine(left: number[], right: number[]) : number[] {
+
+function combine(left: number[], right: number[]): number[] {
     // result to return
     let result: number[] = [];
+
     let l = 0, r = 0;
     while (l < left.length && r < right.length) {
         if (left[l] < right[r]) {
@@ -43,12 +44,32 @@ function combine(left: number[], right: number[]) : number[] {
     }
     if (l < left.length) {
         result.push(left[l++]);
-    } 
+    }
     if (r < right.length) {
         result.push(right[r++]);
     }
     return result;
 }
+
+// function combine(left: number[], right: number[]) : number[] {
+//     // result to return
+//     let result: number[] = [];
+//     let l = 0, r = 0;
+//     while (l < left.length && r < right.length) {
+//         if (left[l] < right[r]) {
+//             result.push(left[l++]);
+//         } else {
+//             result.push(right[r++]);
+//         }
+//     }
+//     if (l < left.length) {
+//         result.push(left[l++]);
+//     } 
+//     if (r < right.length) {
+//         result.push(right[r++]);
+//     }
+//     return result;
+// }
 
 
 // test cases
