@@ -135,7 +135,10 @@ function sudoku(board: string[][], dataToPutIntoBoard: string): void {
     nQueueForEachNumber(board, dataToPutIntoBoard + '', onePossiblePosition, totalResult);
 
     let positions = totalResult[0];
+    
     console.log(dataToPutIntoBoard + '=>' + totalResult[0]);
+
+    // modify the board with the positions of dataToPutIntoBoard
     for (let i = 0; i < positions.length; i++) {
         console.log(i + ' | ' + positions[i]);
         board[i][+positions[i]] = dataToPutIntoBoard + '';
