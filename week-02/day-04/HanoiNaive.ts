@@ -1,27 +1,30 @@
 'use strict';
 
-import { putIntoOneStack } from "./Hanoi";
+// let stack1: number[] = [1, 3];
+// let stack2: number[] = [2];
+// let stack3: number[] = [];
 
-let stack1: number[] = [1, 3];
-let stack2: number[] = [2];
-let stack3: number[] = [];
-
-// let stack1: number[] = [4, 8, 2, 7, 6];
-// let stack2: number[] = [1, 9, 5];
-// let stack3: number[] = [3];
+let stack1_Naive: number[] = [4, 8, 2, 7, 6];
+let stack2_Naive: number[] = [1, 9, 5];
+let stack3_Naive: number[] = [3];
 
 function sortNavie() {
     // corner case
-    if (stack1 == null || stack1.length <= 1) {
+    if (stack1_Naive == null || stack1_Naive.length <= 1) {
         return;
     }
 
-    stack1 = stack1.concat(stack3);
-    stack1 = stack1.concat(stack2);
-    stack3 = [];
-    stack2 = [];
+    stack1_Naive = stack1_Naive.concat(stack3_Naive);
+    stack1_Naive = stack1_Naive.concat(stack2_Naive);
+    stack3_Naive = [];
+    stack2_Naive = [];
 
-    helperNavie(stack1, stack2, stack3, stack1.length + stack2.length + stack3.length);
+    console.log("After put all elements into stack 1 : ");
+    console.log("A : " + stack1_Naive);
+    console.log("B : " + stack2_Naive);
+    console.log("C : " + stack3_Naive);
+
+    helperNavie(stack1_Naive, stack2_Naive, stack3_Naive, stack1_Naive.length + stack2_Naive.length + stack3_Naive.length);
 }
 
 function helperNavie(stack1: any[], stack2: any[], stack3: any[], totalNb: any) {
@@ -48,15 +51,15 @@ function helperNavie(stack1: any[], stack2: any[], stack3: any[], totalNb: any) 
 
 // test
 console.log("Before : ");
-console.log("A : " + stack1);
-console.log("B : " + stack2);
-console.log("C : " + stack3);
+console.log("A : " + stack1_Naive);
+console.log("B : " + stack2_Naive);
+console.log("C : " + stack3_Naive);
 
 console.time("sort time");
 sortNavie();
 console.timeEnd("sort time");
 
 console.log("After : ");
-console.log("A : " + stack1);
-console.log("B : " + stack2);
-console.log("C : " + stack3);
+console.log("A : " + stack1_Naive);
+console.log("B : " + stack2_Naive);
+console.log("C : " + stack3_Naive);

@@ -118,7 +118,6 @@ function sudoku(board: string[][], dataToPutIntoBoard: string): boolean {
 
     // modify the board with the positions of dataToPutIntoBoard
     for (let i = 0; i < positions.length; i++) {
-        // console.log(i + ' | ' + positions[i]);
         board[i][+positions[i]] = dataToPutIntoBoard + '';
     }
     return true;
@@ -162,12 +161,14 @@ console.log(board1);
 console.time("board 1");
 for (let i = 1; i <= board1.length; i++) {
     sudoku(board1, i + '');
+    console.log(board1);
 }
 console.timeEnd("board 1");
 console.log(board1);
 
+console.log("\n\n\n");
 
-console.log("Board 2 : ");
+
 // test function init_board
 let init_data2: string[][] = [
     ['0', '3', '9'],
@@ -190,9 +191,15 @@ let init_data2: string[][] = [
 ];
 // init board with initial data
 init_board(board2, init_data2);
+console.log("Board 2 : ");
 console.log("Before : ");
 console.log(board2);
 
-
+console.time("board 2");
+for (let i = 1; i <= board2.length; i++) {
+    sudoku(board2, i + '');
+    console.log(board2);
+}
+console.timeEnd("board 2");
 
 console.log(board2);
