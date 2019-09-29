@@ -6,7 +6,7 @@ class NoES6Set {
     }
 
     add(input) {    
-        if (this.data.indexOf(input) == -1) {
+        if (this.data.includes(input)) {
             this.data.push(input);
         }
     }
