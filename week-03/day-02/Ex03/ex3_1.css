@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.outer_container {
+    width: 100%;
+    height: 60%;
+    background-color: orange;
+    display: flex;
+}
+
+.container {
+    width: 100%;
+    height: 20%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.item {
+    width: 15%;
+    margin-right: 20px;
+    background-color: purple;
+}
