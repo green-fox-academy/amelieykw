@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <meta charset="utf-8">
+    <title>Login Form</title>
 
-    <link rel="stylesheet" type="text/css" href="./loginForm.css" />
+    <!--    <link rel="stylesheet" type="text/css" href="LoginForm.css" />-->
 </head>
 
-<body>
-    <form action="/my-handling-form-page" method="post">
-        <div class="container">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
+<body style="background-color: lightgrey;">
+    <form action="" method="post" style="position: absolute; margin-top: 10%; margin-left: 35%;  padding: 40px 80px; width: 20%; height: 20%; border: 3px solid black; background-color: white">
+        <div style="width: 100%; height: 30%; display: block;">
+            <label for="username" style="display: block;padding: 10px; width: 100%; height: 15%;">Username:</label>
+            <input type="text" id="username" autofocus style="width: 100%; height: 40%; padding: 0px;">
         </div>
-        <div class="container">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
+        <div style="width: 100%; height: 30%;">
+            <label for="password" style="display: block;padding: 10px; width: 100%; height: 15%;">Password:</label>
+            <input type="password" id="password" style="width: 100%; height: 40%; padding: 0px;">
         </div>
-        <div>
-            <input type="submit" id="login" value="Login">
+        <div style="width: 100%; height: 40%;">
+            <div style="width: 100%; height: 30%; text-align: right; padding: 10px;">
+                Forget password ?
+            </div>
+            <div style="width: 100%; height: 70%;">
+                <input type="submit" value="Login" id="login" style="margin-left: 10px; width: 35%; height: 60%; color: white; background-color: black; border: 0px; border-radius: 10px; font-size: 15px; padding: 5px;">
+            </div>
         </div>
     </form>
-</body>
-
-</html>
+</body></html>
