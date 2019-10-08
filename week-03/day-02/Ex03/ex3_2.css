@@ -27,6 +27,7 @@ html, body {
 }
 
 .item {
+    list-style-type: none;
     width: 15%;
     background-color: purple;
 }
