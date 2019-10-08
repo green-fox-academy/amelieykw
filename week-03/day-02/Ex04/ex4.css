@@ -1,0 +1,44 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 10% 90%;
+    grid-template-areas: "header header header header"
+    "main main main sidebar";
+}
+
+.header {
+    grid-area: header;
+    background-color: purple;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.item {
+    background-color: skyblue;
+    width: 10%;
+    margin: 20px;
+    
+}
+
+.main {
+    grid-area: main;
+    background-color: yellow;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: green;
+}
