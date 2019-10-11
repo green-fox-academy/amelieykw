@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fetch some jokes</title>
+</head>
+
+<body>
+    <button>
+        Gimme a joke
+    </button>
+    <div class="container">
+    </div>
+
+    <script>
+        document.getElementsByTagName('button')[0].addEventListener('click', function () {
+            fetchData();
+        });
+
+        const URL = "http://api.icndb.com/jokes/random";
+        const container = document.getElementsByClassName('container')[0];
+
+        function fetchData() {
+            container.innerHTML = "<p>Loading...</p>";
+
+            fetch(URL)
+                .then((Response) => Response.json())
+                .then((data) => appendToHtml(data))
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
+        function appendToHtml(data) {
+            container.innerHTML = '';
+            let p = document.createElement("P");
+            p.innerHTML = `<p>${data.value.joke}</p>`;
+            // container.appendChild(p);
+            container.parentNode.insertBefore(p, container.firstChild);
+        }
+    </script>
+</body>
+
+</html>
