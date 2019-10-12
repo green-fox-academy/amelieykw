@@ -37,7 +37,7 @@
         function appendToHtml(data) {
             container.innerHTML = '';
             let p = document.createElement("P");
-            p.innerHTML = `<p>${data.value.joke}</p>`;
+            p.innerHTML = `${data.value.joke}`;
             container.parentNode.insertBefore(p, container.firstChild);
         }
     </script>

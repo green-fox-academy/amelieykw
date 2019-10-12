@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: 30% 40% 30%;
+            grid-template-rows: 10% 50% 40%;
+            grid-area: ". . . " ". main ." ". . . ";
+        }
+        .container {
+            grid-area: main;
+            /* margin: 10% auto; */
+        }
+        #label {
+            /* margin-bottom: 10px; */
+        }
+        button {
+            /* margin-left: 10px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="label">Enter character name</div>
+        <input type="text" autofocus>
+        <button type="button">Search</button>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

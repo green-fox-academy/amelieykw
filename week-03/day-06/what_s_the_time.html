@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What's the time?</title>
+</head>
+
+<body>
+    <div class="container" id="show-time">
+        Script loaded at <span id="show-date"></span>
+    </div>
+    <button type="button">Resolve</button>
+    <div class="container" id="time-passed-before-click">
+        Button clicked after <span id="time-result"></span> secondes
+    </div>
+
+    <script>
+        const originDate = new Date();
+        let originTimeStamp = document.getElementById("show-date");
+        originTimeStamp.innerHTML = originDate;
+        modifyDateCSS(originTimeStamp);
+
+        document.getElementsByTagName("button")[0].addEventListener('click', function () {
+            let timeResult = document.getElementById("time-result");
+            timeResult.innerHTML = calculateTime();
+            modifyDateCSS(timeResult);
+        });
+
+        function calculateTime() {
+            let currentTimeStamp = new Date();
+            return currentTimeStamp.getSeconds() - originDate.getSeconds();
+        }
+
+        function modifyDateCSS(date) {
+            date.style.color = "orangered";
+            date.style.backgroundColor = "lightgrey";
+            date.style.border = "1px solid lightgrey";
+            date.style.padding = "10px";
+        }
+    </script>
+</body>
+
+</html>
