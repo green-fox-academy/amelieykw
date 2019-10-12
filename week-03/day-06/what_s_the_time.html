@@ -31,7 +31,7 @@
 
         function calculateTime() {
             let currentTimeStamp = new Date();
-            return currentTimeStamp.getSeconds() - originDate.getSeconds();
+            return (currentTimeStamp.getTime() - originDate.getTime()) / 1000;
         }
 
         function modifyDateCSS(date) {
