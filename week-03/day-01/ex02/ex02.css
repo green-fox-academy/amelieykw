@@ -1,0 +1,32 @@
+.container {
+    background-color: rgb(38, 127, 239);
+    height: 500px;
+    width: 300px;
+    padding: 10px;
+}
+
+.item {
+    font-size: 36px;
+    color: white;
+    height: 25%;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px;
+}
+
+#north {
+    background-color: rgb(230, 107, 108);
+}
+
+#east {
+    background-color: rgb(244, 234, 97);
+}
+
+#south {
+    background-color: rgb(155, 266, 266);
+}
+
+#west {
+    background-color: rgb(100, 139, 221);
+}
