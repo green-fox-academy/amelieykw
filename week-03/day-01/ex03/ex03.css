@@ -1,0 +1,25 @@
+.container {
+    height: 300px;
+    width: 350px;
+    background-color: rgb(38, 127, 239);
+    padding: 20px;
+    margin: 10px;
+}
+
+.item {
+    height: 50%;
+    width: 100%;
+    font-size: 36px;
+    line-height: 150px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+}
+
+#north {
+    background-color: rgb(230, 107, 108);
+}
+
+#south {
+    background-color: rgb(155, 266, 266);
+}
