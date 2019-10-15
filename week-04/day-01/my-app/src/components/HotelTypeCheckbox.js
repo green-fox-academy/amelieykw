@@ -3,7 +3,7 @@ import React from 'react';
 function HotelTypeCheckbox(props) {
     return (
         <div>
-            <input type="checkbox" /> {props.type} <br />
+            <input type="checkbox" checked = { props.checked } /> {props.type} <br />
         </div>
     );
 }

@@ -5,7 +5,7 @@ import data from '../data/data';
 function Rating() {
     const star = data.filters["Star rating"];
 
-    const stars = star.map((rate) => <div><input type = "checkbox" /> { rate.name } <br /></div>);
+    const stars = star.map((rate) => <div><input type = "checkbox" checked = { rate.checked } /> { rate.name } <br /></div>);
 
     return ( 
         <div className = "rating" >
