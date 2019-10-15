@@ -1,14 +1,16 @@
 import React from 'react';
 
+import data from '../data/data';
+
 function Rating() {
+    const star = data.filters["Star rating"];
+
+    const stars = star.map((rate) => <div><input type = "checkbox" /> { rate.name } <br /></div>);
+
     return ( 
         <div className = "rating" >
             <h3 > Star Rating </h3> 
-            <input type = "checkbox" /> 1 star <br />
-            <input type = "checkbox" /> 2 stars <br />
-            <input type = "checkbox" /> 3 stars <br />
-            <input type = "checkbox" /> 4 stars <br />
-            <input type = "checkbox" /> 5 stars <br />
+            { stars }
         </div>
     );
 }

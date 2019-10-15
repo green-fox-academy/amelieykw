@@ -7,7 +7,8 @@ function HotelItem(props) {
                 <div className="hotelName">
                     {props.hotelName}
                 </div>
-                <p></p>
+                <img src={props.img} alt="" />
+                <p>{props.description}</p>
                 <button type="button">Book now!</button>
             </div>
         </li>
