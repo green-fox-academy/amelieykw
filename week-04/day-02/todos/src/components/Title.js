@@ -1,13 +1,9 @@
 import React from 'react';
 
 class Title extends React.Component {
-    constructor() {
-        super();
-    }
-
     render() {
         return (
-            <h1>TODOS</h1>
+            <h1 className="heading">TODOS</h1>
         );
     }
 }

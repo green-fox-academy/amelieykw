@@ -1,10 +1,68 @@
+html {
+  background-color: rgb(80, 227, 194);
+}
+
 .container {
   border: 1px solid black;
   max-width: 60vh;
   width: 60vh;
-  max-height: 80vh;
-  height: 80vh;
+  max-height: auto;
+  height: auto;
   margin-top: 10vh;
-  margin-left: 35vh;
+  margin-left: 65vh;
   text-align: center;
+  background-color: rgb(247, 247, 247);
+  padding-bottom: 5vh;
+}
+
+.heading {
+  font-family: 'Lato', sans-serif;
+  font-size: 64px;
+  font-weight: 300;
+  color: #b8b8b8;
+}
+
+ul {
+  margin-left: 10vh;
+  margin-right: 10vh;
+  padding: 0;
+}
+
+.todo-item {
+  font-family: 'Lato', sans-serif;
+  font-size: 26px;
+  line-height: 2.2;
+  color: #b8b8b8;
+  list-style: none;
+  text-align: left;
+}
+
+.inputBox {
+  height: auto;
+  width: auto;
+  /* margin-left: 5vh;
+  margin-right: 5vh; */
+  padding: 0;
+}
+
+input {
+  height: auto;
+  width: auto;
+  font-size: 26px;
+  border: 2px solid rgb(188, 188, 188);
+  border-right: 0;
+}
+
+button {
+  background-color: rgb(223, 105, 232);
+  height: auto;
+  border: 2px solid rgb(188, 188, 188);
+  border-left: 0;
+}
+
+.button-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 26px;
+  color: #ffffff;
+  width: auto;
 }
