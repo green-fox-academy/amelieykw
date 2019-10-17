@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import SlideShow from './components/SlideShow';
+import MySlideShow from './components/MyOwnSlideShow';
 
 function App() {
   return (
     <div className="App">
-      <SlideShow />
+      <MySlideShow />
     </div>
   );
 }
