@@ -19,31 +19,23 @@ const properties = {
 }
 
 const SlideShow = () => {
+    const imgs = slideImages.map(img => <ImgContainer imgUrl={img} />)
     return (
         <div className="slide-container">
             <Slide {...properties}>
-                <div className="each-slide">
-                    <div className="img-container"
-                        style={{
-                            'backgroundImage': `url(${slideImages[0]})`,
-                            'background-repeat': 'no-repeat',
-                            'background-size': '100% 100%'
-                    }}>
-                        <span>Slide 1</span>
-                    </div>
-                </div>
-                <div className="each-slide">
-                    <div className="img-container" style={{ 'backgroundImage': `url(${slideImages[1]})` }}>
-                        <span>Slide 2</span>
-                    </div>
-                </div>
-                <div className="each-slide">
-                    <div className="img-container" style={{ 'backgroundImage': `url(${slideImages[2]})` }}>
-                        <span>Slide 3</span>
-                    </div>
-                </div>
+                { imgs }
             </Slide>
         </div >
+    )
+}
+
+const ImgContainer = (props) => {
+    return (
+        <div className="each-slide">
+            <div className="img-container"
+                style={{ 'backgroundImage': `url(${props.imgUrl})` }}>
+            </div>
+        </div>
     )
 }
 
