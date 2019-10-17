@@ -8,7 +8,6 @@ class InputBox extends React.Component {
         }
     }
 
-
     render() {
         return (
             <div className="inputBox">
