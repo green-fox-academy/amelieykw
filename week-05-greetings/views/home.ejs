@@ -5,6 +5,6 @@
     <title><%= title %></title>
   </head>
   <body>
-    <h1><%= title %>, <%= username %></h1>
+    <h1><%= title %>, <% if (username !== undefined) { %><%= username %> <% } else { %><%= "Guest" %><% } %> </h1>
   </body>
 </html>
