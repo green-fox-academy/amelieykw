@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title><%= title %></title>
-  </head>
-  <body>
-    <h1><%= title %>, <% if (username !== undefined) { %><%= username %> <% } else { %><%= "Guest" %><% } %> </h1>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title><%= title %></title>
+</head>
+
+<body>
+  <h1><%= title %>, <% if (username !== undefined) { %><%= username %> <% } else { %><%= "Guest" %><% } %> </h1>
+  <button onClick="handleClick()">Click me!</button>
+
+  <script>
+    function handleClick() {
+      window.location = "/?name=John";
+    }
+  </script>
+</body>
+
 </html>
