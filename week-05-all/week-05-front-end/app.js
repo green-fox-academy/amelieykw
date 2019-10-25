@@ -3,7 +3,12 @@ const path = require('path');
 const app = express();
 const PORT = 8080;
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 app.use(express.static('assets'));
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
@@ -58,6 +63,58 @@ app.get('/appenda/:appendable', (req, res) => {
         });
     }
 });
+
+app.post('/', (req, res) => {
+    res.send(req.body);
+});
+
+app.post('/dountil/:action', function (req, res) {
+    let until = req.body.until;
+    let action = req.params.action;
+
+    if (until === undefined) {
+        res.send({
+            "error": "Please provide an number"
+        });
+    } else if (action === 'sum') {
+        res.send({
+            "result": 15
+        });
+    } else if (action === 'factor') {
+        res.send({
+            "result": 120
+        });
+    } 
+});
+
+// app.get('/dountil/sum', (req, res) => {
+//     let until = req.body.until;
+//     if (until !== undefined) {
+//         res.send({
+//             "result": 15
+//         });
+//     } else {
+//         res.send({
+//             "error": "Please provide an number"
+//         })
+
+//     }
+// });
+
+// app.get('/dountil/factor', (req, res) => {
+//     let until = req.body.until;
+//     if (until !== undefined) {
+//         res.send({
+//             "result": 120
+//         });
+//     } else {
+//         res.send({
+//             "error": "Please provide an number"
+//         })
+
+//     }
+// });
+
 
 // start express app on port 3000
 let server = app.listen(PORT, () => {
