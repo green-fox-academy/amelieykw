@@ -46,6 +46,19 @@ app.get('/greeter', (req, res) => {
     }
 });
 
+app.get('/appenda/:appendable', (req, res) => {
+    let appenda = req.params.appendable;
+    if (appenda === undefined) {
+        res.send({
+            "error": "Please provide an appenda"
+        })
+    } else {
+        res.send({
+            "appended": appenda
+        });
+    }
+});
+
 // start express app on port 3000
 let server = app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
