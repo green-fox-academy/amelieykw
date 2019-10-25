@@ -170,3 +170,37 @@ function reverse(sentence) {
 
     return result;
 }
+
+
+app.post('/translate', function (req, res) {
+    let text = req.body.text;
+    let lang = req.body.lang;
+
+    if (text === undefined || lang !== "en") {
+        res.send({
+            "error": "I can't translate that!"
+        });
+    } else {
+        res.send({
+            "translated": translate(text),
+            "lang": "gibberish"
+        });
+    }
+});
+
+function translate(text) {
+    let letters = ['a', 'e', 'i', 'o', 'u'];
+
+    let result = "";
+    let fast = 0;
+    while (fast < text.length) {
+        if (letters.includes(text[fast])) {
+            result += text[fast];
+            result += "l";
+            result += text[fast++];
+        } else {
+            result += text[fast++];
+        }
+    }
+    return result;
+}
