@@ -84,36 +84,40 @@ app.post('/dountil/:action', function (req, res) {
         res.send({
             "result": 120
         });
-    } 
+    }
 });
 
-// app.get('/dountil/sum', (req, res) => {
-//     let until = req.body.until;
-//     if (until !== undefined) {
-//         res.send({
-//             "result": 15
-//         });
-//     } else {
-//         res.send({
-//             "error": "Please provide an number"
-//         })
+app.post('/arrays', function (req, res) {
+    let what = req.body.what;
+    let numbers = req.body.numbers;
 
-//     }
-// });
-
-// app.get('/dountil/factor', (req, res) => {
-//     let until = req.body.until;
-//     if (until !== undefined) {
-//         res.send({
-//             "result": 120
-//         });
-//     } else {
-//         res.send({
-//             "error": "Please provide an number"
-//         })
-
-//     }
-// });
+    if (what === undefined) {
+        res.send({
+            "error": "Please provide what to do with the numbers!"
+        });
+    } else if (what === 'sum') {
+        let result = 0; 
+        numbers.forEach(number => {
+            result += number;
+        });
+        res.send({
+            "result": result
+        });
+    } else if (what === 'multiply') {
+        let result = 1; 
+        numbers.forEach(number => {
+            result *= number;
+        });
+        res.send({
+            "result": result
+        });
+    } else if (what === 'double') {
+        let result = numbers.map(number => number * 2);
+        res.send({
+            "result": result
+        });
+    }
+});
 
 
 // start express app on port 3000
