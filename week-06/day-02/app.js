@@ -86,24 +86,24 @@ app.get('/books', (req, res) => {
     let pricePlt = req.query.plt;
     let pricePgt = req.query.pgt;
 
-    let query = "";
+    let query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND c.cate_id = b.cate_id AND pub.pub_id = b.pub_id AND ";
 
     if (![author, category, publisher].includes(undefined)) {
-        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND aut_name =\"" + author + "\" AND cate_descrip =\"" + category + "\" AND pub_name = \"" + publisher + "\"";
+        query += "aut_name =\"" + author + "\" AND cate_descrip =\"" + category + "\" AND pub_name = \"" + publisher + "\"";
     } else if (category == undefined && ![author, publisher].includes(undefined)) {
-        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND aut_name =\"" + author + "\" AND pub_name = \"" + publisher + "\"";
+        query += "aut_name =\"" + author + "\" AND pub_name = \"" + publisher + "\"";
     } else if (publisher == undefined && ![author, category].includes(undefined)) {
-        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND aut_name =\"" + author + "\" AND cate_descrip = \"" + category + "\"";
+        query += "aut_name =\"" + author + "\" AND cate_descrip = \"" + category + "\"";
     } else if (author != undefined) {
-        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND aut_name =\"" + author + "\"";
+        query += "aut_name =\"" + author + "\"";
     } else if (category != undefined) {
-        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND c.cate_id = b.cate_id AND pub.pub_id = b.pub_id AND cate_descrip = \""+ category + "\"";
+        query += "cate_descrip = \""+ category + "\"";
     } else if (publisher != undefined) {
-        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND pub_name = \"" + publisher + "\"";
+        query += "pub_name = \"" + publisher + "\"";
     } else if (pricePlt != undefined) {
-        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND book_price < \"" + pricePlt + "\"";
+        query += "book_price < \"" + pricePlt + "\"";
     } else if (pricePgt != undefined) {
-        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND book_price > \"" + pricePgt + "\"";
+        query += "book_price > \"" + pricePgt + "\"";
     }
 
     // execute query 
