@@ -44,6 +44,8 @@ app.use(express.static(path.join(__dirname, 'public'))); // configure express to
 app.get('/', (req, res) => {
     let query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND c.cate_id = b.cate_id AND pub.pub_id = b.pub_id;"; // query database to get all the books' titles
 
+    
+
     // execute query 
     db.query(query, function (err, rows) {
         if (err) {
@@ -69,6 +71,49 @@ app.get('/getAllBooks', (req, res) => {
             return;
         }
         res.render('getAllBooks.ejs', {
+            title: 'All Books in BookStore',
+            books: rows
+        });
+    });
+});
+
+
+// filters
+app.get('/books', (req, res) => {
+    let author = req.query.author;
+    let category = req.query.category;
+    let publisher = req.query.publisher;
+    let pricePlt = req.query.plt;
+    let pricePgt = req.query.pgt;
+
+    let query = "";
+
+    if (![author, category, publisher].includes(undefined)) {
+        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND aut_name =\"" + author + "\" AND cate_descrip =\"" + category + "\" AND pub_name = \"" + publisher + "\"";
+    } else if (category == undefined && ![author, publisher].includes(undefined)) {
+        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND aut_name =\"" + author + "\" AND pub_name = \"" + publisher + "\"";
+    } else if (publisher == undefined && ![author, category].includes(undefined)) {
+        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND aut_name =\"" + author + "\" AND cate_descrip = \"" + category + "\"";
+    } else if (author != undefined) {
+        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND aut_name =\"" + author + "\"";
+    } else if (category != undefined) {
+        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND c.cate_id = b.cate_id AND pub.pub_id = b.pub_id AND cate_descrip = \""+ category + "\"";
+    } else if (publisher != undefined) {
+        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND pub_name = \"" + publisher + "\"";
+    } else if (pricePlt != undefined) {
+        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND book_price < \"" + pricePlt + "\"";
+    } else if (pricePgt != undefined) {
+        query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND book_price > \"" + pricePgt + "\"";
+    }
+
+    // execute query 
+    db.query(query, function (err, rows) {
+        if (err) {
+            console.log(err.toString());
+            res.status(500).send('Database error');
+            return;
+        }
+        res.render('index.ejs', {
             title: 'All Books in BookStore',
             books: rows
         });
