@@ -1,0 +1,104 @@
+<% include header.ejs %>
+<div class="table-wrapper">
+    <% if (books.length > 0) {%>
+    <table class="table table-hovered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">
+                    <div class="dropdown">
+                        <button class="dropbtn">Author</button>
+                        <div class="dropdown-content">
+                            <% let authors = [];
+                                books.forEach((book) => {
+                                    if (authors.indexOf(book.aut_name) == -1) {
+                                        authors.push(book.aut_name);
+                                    }
+                                }); %>
+                            <% authors.forEach((author) => { %>
+                            <a href="/books?author=<%= author %>"><%= author %></a>
+                            <% }) %>
+                        </div>
+                </th>
+                <th scope="col">
+                    <div class="dropdown">
+                        <button class="dropbtn">Category</button>
+                        <div class="dropdown-content">
+                            <% let categories = [];
+                                books.forEach((book) => {
+                                    if (categories.indexOf(book.cate_descrip) == -1) {
+                                        categories.push(book.cate_descrip);
+                                    }
+                                }); %>
+                            <% categories.forEach((category) => { %>
+                            <a href="/books?category=<%= category %>"><%= category %></a>
+                            <% }) %>
+                        </div>
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="dropdown">
+                        <button class="dropbtn">Publisher</button>
+                        <div class="dropdown-content">
+                            <% let publishers = [];
+                                    books.forEach((book) => {
+                                        if (publishers.indexOf(book.pub_name) == -1) {
+                                            publishers.push(book.pub_name);
+                                        }
+                                    }) %>
+                            <% publishers.forEach((publisher) => { %>
+                            <a href="/books?publisher=<%= publisher %>"><%= publisher %></a>
+                            <% }) %>
+                        </div>
+                </th>
+                <% let prices = [];
+                books.forEach((book) => {
+                    if (prices.indexOf(book.book_price) == -1) {
+                        prices.push(book.book_price);
+                    }
+                }) %>
+                <th scope="col">
+                    <div class="dropdown">
+                        <button class="dropbtn">&lt;</button>
+                        <div class="dropdown-content">
+                            <% prices.sort(function(a, b){return a-b}); %>
+                            <% prices.forEach((price) => { %>
+                            <a href="/books?plt=<%= price %>"><%= price %></a>
+                            <% }) %>
+                        </div>
+                    </div>
+                    Price
+                    <div class="dropdown">
+                        <button class="dropbtn">&gt;</button>
+                        <div class="dropdown-content">
+                            <% prices.reverse(); %>
+                            <% prices.forEach((price) => { %>
+                            <a href="/books?pgt=<%= price %>"><%= price %></a>
+                            <% }) %>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% books.forEach((book, index) => { %>
+            <tr>
+                <th scope="row"><%= book.book_id %></th>
+                <td><%= book.book_name %></td>
+                <td><%= book.aut_name %></td>
+                <td><%= book.cate_descrip %></td>
+                <td><%= book.pub_name %></td>
+                <td><%= book.book_price %></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <% } else { %>
+    <p class="text-center">No books found. Go <a href="/add">here</a> to add books.</p>
+    <% } %>
+</div>
+</div>
+</body>
+
+</html>
