@@ -1,0 +1,117 @@
+[
+    {
+        "id": 1,
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "genre": "Sci-fic"
+    },
+    {
+        "id": 2,
+        "title": "Harry Potter and the Chamber of Secrets",
+        "genre": "Sci-fic"
+    },
+    {
+        "id": 3,
+        "title": "Harry Potter and the Prisoner of Azkaban",
+        "genre": "Sci-fic"
+    },
+    {
+        "id": 4,
+        "title": "Harry Potter and the Goblet of Fire",
+        "genre": "Sci-fic"
+    },
+    {
+        "id": 5,
+        "title": "Harry Potter and the Order of the Phoenix",
+        "genre": "Sci-fic"
+    },
+    {
+        "id": 6,
+        "title": "Harry Potter and the Half-Blood Prince",
+        "genre": "Sci-fic"
+    },
+    {
+        "id": 7,
+        "title": "Harry Potter and the Deathly Hallows",
+        "genre": "Sci-fic"
+    },
+    {
+        "id": 8,
+        "title": "Twilight: New Moon",
+        "genre": "Sci-fic"
+    },
+    {
+        "id": 9,
+        "title": "Twilight: Eclipse",
+        "genre": "Sci-fic"
+    },
+    {
+        "id": 10,
+        "title": "Twilight: Breaking Dawn - Part 1",
+        "genre": "Sci-fic"
+    },
+    {
+        "id": 11,
+        "title": "Twilight: Breaking Dawn - Part 2",
+        "genre": "Sci-fic"
+    },
+    {
+        "id": 12,
+        "title": "Fast and Furious",
+        "genre": "action"
+    },
+    {
+        "id": 13,
+        "title": "Forrest Gump",
+        "genre": "drama"
+    },
+    {
+        "id": 14,
+        "name": "Mission Impossible 18",
+        "genre": "action"
+    },
+    {
+        "id": 15,
+        "title": "Intouchable",
+        "genre": "drama"
+    },
+    {
+        "id": 16,
+        "title": "Tomorrow",
+        "genre": "drama"
+    },
+    {
+        "id": 17,
+        "title": "Elle",
+        "genre": "drama"
+    },
+    {
+        "id": 18,
+        "title": "Rouge",
+        "genre": "drama"
+    },
+    {
+        "id": 19,
+        "name": "Blanche",
+        "genre": "action"
+    },
+    {
+        "id": 20,
+        "title": "Bleu",
+        "genre": "drama"
+    },
+    {
+        "id": 21,
+        "title": "Black Swan",
+        "genre": "drama"
+    },
+    {
+        "id": 22,
+        "title": "Pikachu",
+        "genre": "animation"
+    },
+    {
+        "id": 23,
+        "title": "Ditective Conan",
+        "genre": "animation"
+    }
+]
