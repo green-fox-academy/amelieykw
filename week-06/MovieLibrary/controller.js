@@ -12,12 +12,20 @@ module.exports = http.createServer((req, res) => {
     let parts = pathname.split("/");
     
     console.log('Request Type:' + req.method + ' Endpoint: ' + reqUrl.pathname);
-    // GET Endpoint
-    if (parts[1] === 'movies' && req.method === 'GET') {
-        if (reqUrl.search !== null) {            
+    if (parts[1] === 'movies') {
+        // GET Endpoint
+        if (reqUrl.search !== null && req.method === 'GET') {            
             service.moviesRequest(req, res);
         } else if (reqUrl.search === null) {
-            service.movieIdRequest(req, res);
-        }
-    }
+            if (req.method === 'GET') {
+                service.movieIdRequest(req, res);
+            } else if (req.method === 'DELETE') {
+                service.deleteMovieRequest(req, res);
+            } else if (req.method === 'POST') {
+                service.createMovieRequest(req, res);
+            } else if (req.method === 'PUT') {
+                service.updateMovieRequest(req, res);
+            } 
+        } 
+    } 
 });
