@@ -4,11 +4,15 @@ const mysql = require('mysql');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var htmlRouter = require('./routes/html-routes');
 
 var app = express();
+
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,16 +24,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function (req, res, next) {
+//   next(createError(404));
+// });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -48,10 +52,29 @@ const mysqldb = mysql.createConnection({
   database: 'fullstackReactExpressMysql'
 });
 
-mysqldb.connect(function(err) {
-  (err) ? console.log(err) : console.log('connection successully');
+mysqldb.connect(function (err) {
+  if (err) {
+    console.log(err);
+  }
+  console.log('connection successully');
+
+  let createTableUsers = `CREATE TABLE IF NOT EXISTS users(
+      id int primary key auto_increment,
+      name varchar(255) not null
+    )`;
+
+
+    mysqldb.query(createTableUsers, function (err, results, fields) {
+    if (err) {
+      console.log(err.message);
+    }
+  });
 });
 
-require('./routes/html-routes')(app, mysqldb);
+app.get('/', (req, res) => {
+  mysqldb.query("SELECT * FROM users;", (err, data) => {
+      (err) ? res.send(err) : res.json({users: data});
+  });
+});
 
 module.exports = app;

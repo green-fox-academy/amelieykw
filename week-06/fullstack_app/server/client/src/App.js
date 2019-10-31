@@ -11,16 +11,16 @@ class App extends React.Component {
     this.getUsers();
   }
 
-  getUsers = _ => {
+  getUsers = () => {
     fetch('http://localhost:3001')
-      .then(response => console.log(response)) // response.json()
-      .then(({response}) => this.setState({users : 'response.users'}))
-      .catch(error => console.log(error));
+      .then((resp)=>{ return resp.json() })
+      .then((json)=>{ this.setState({users: json.users}) })
+      .catch(error => console.log("error at fetching : " + error));
   }
 
-  showUsers = user => {user.username};
+  showUsers = (user) => { return user.name };
 
-  render() { 
+  render() {
     const { users } = this.state;
     return (
       <div className="App">
