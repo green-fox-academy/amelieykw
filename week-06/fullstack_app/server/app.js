@@ -8,7 +8,6 @@ const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var htmlRouter = require('./routes/html-routes');
 
 var app = express();
 
@@ -62,7 +61,6 @@ mysqldb.connect(function (err) {
       id int primary key auto_increment,
       name varchar(255) not null
     )`;
-
 
     mysqldb.query(createTableUsers, function (err, results, fields) {
     if (err) {
