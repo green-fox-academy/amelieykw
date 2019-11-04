@@ -12,6 +12,8 @@ const cors = require('cors');
 var app = express();
 
 app.use(cors());
+app.set('port', process.env.PORT || 3000);
+app.listen(app.get('port'));
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
@@ -125,8 +127,11 @@ function executeSQLquery(query) {
 
 app.get('/', (req, res) => {
   mysqldb.query("SELECT * FROM posts;", (err, data) => {
-    (err) ? res.send(err) : res.json({ users: data });
+    (err) ? res.send(err) : res.json({ posts: data });
   });
 });
+
+
+
 
 module.exports = app;
