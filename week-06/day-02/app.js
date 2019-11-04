@@ -44,8 +44,6 @@ app.use(express.static(path.join(__dirname, 'public'))); // configure express to
 app.get('/', (req, res) => {
     let query = "SELECT * FROM book_mast as b, author as a, category as c, publisher as pub WHERE a.aut_id = b.aut_id AND c.cate_id = b.cate_id AND pub.pub_id = b.pub_id;"; // query database to get all the books' titles
 
-    
-
     // execute query 
     db.query(query, function (err, rows) {
         if (err) {
