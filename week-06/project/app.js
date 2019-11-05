@@ -19,8 +19,8 @@ app.listen(app.get('port'));
 // app.set('view engine', 'ejs');
 
 // app.use(logger('dev'));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
@@ -52,6 +52,12 @@ let service = require('./service.js');
 
 // GET /posts
 app.get('/', (req, res) => {
+  req.accepts('application/json');
   service.getAllPosts(req, res);
 });
 
+// POST /posts
+app.post('/', (req, res) => {
+  req.accepts('application/json');
+  service.postApost(req, res);
+});
