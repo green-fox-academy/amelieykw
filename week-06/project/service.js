@@ -41,7 +41,6 @@ function upvote(req, res) {
 
 };
 
-
 function downvote(req, res) {
     let query = `UPDATE posts SET score = score - 1 WHERE id = ${req.params.id};`;
     let postprocessQuery = `SELECT * FROM posts WHERE id = ${req.params.id};`;
