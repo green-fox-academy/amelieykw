@@ -51,13 +51,25 @@ connectToDB.connectToDB();
 let service = require('./service.js');
 
 // GET /posts
-app.get('/', (req, res) => {
+app.get('/posts', (req, res) => {
   req.accepts('application/json');
   service.getAllPosts(req, res);
 });
 
 // POST /posts
-app.post('/', (req, res) => {
+app.post('/posts', (req, res) => {
   req.accepts('application/json');
   service.postApost(req, res);
+});
+
+// PUT /posts/<id>/upvote
+app.put('/posts/:id/upvote', (req, res) => {
+  req.accepts('application/json');
+  service.upvote(req, res);
+});
+
+// PUT /posts/<id>/downvote
+app.put('/posts/:id/downvote', (req, res) => {
+  req.accepts('application/json');
+  service.downvote(req, res);
 });
