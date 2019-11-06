@@ -4,13 +4,15 @@ function RightSidebar() {
     
     let rightSidebarStyle = {
         flex: 1,
-        height: "auto",
-        border: "1px solid black"
+        height: "30%",
+        margin: "1%",
+        marginRight: "3%",
+        border: "1px solid black",
+        backgroundColor: "#FFFFFF"
     };
     
     return (
         <div style={rightSidebarStyle}>
-            <h1>SPACE</h1>
         </div>
     );
 }

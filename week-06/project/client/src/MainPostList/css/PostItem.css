@@ -1,0 +1,92 @@
+li {
+    list-style-type: none;
+    height: auto;
+    margin: 0;
+    padding: 1%;
+    margin-bottom: 1%;
+    margin-left: 3%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.score {
+    flex: 1;
+    max-width: 5%;
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 2px solid red; */
+}
+
+button {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: transparent;
+    border: 0;
+    width: 60%;
+}
+
+button:active, button:focus {
+    outline: none;
+}
+
+.upVote {
+    flex: 1;
+    background-image: url("../../images/upvote.png");
+}
+
+.upVote:active, .upVote:focus {
+    background-image: url("../../images/upvoted.png");
+}
+
+.scoreData {
+    flex: 1;
+    font-weight: 700;
+    color: #B4B4B4;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.downVote {
+    flex: 1;
+    background-image: url("../../images/downvote.png");
+}
+
+.downVote:active, .downVote:focus {
+    background-image: url("../../images/downvoted.png");
+}
+
+.content {
+    flex: 1;
+}
+
+.owner {
+    margin: 1%;
+    font-size: 13px;
+    /* border: 2px solid green; */
+}
+
+.ownerName {
+    color: #4AA3DF;
+}
+
+.title {
+    margin: 1%;
+    /* border: 2px solid blue; */
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+}

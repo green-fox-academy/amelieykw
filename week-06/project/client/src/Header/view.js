@@ -9,7 +9,7 @@ function Header() {
         height: "200px",
         backgroundImage: `url(${Background})`,
         backgroundSize: "100% 100%",
-        backgroundRepeat: "no-repeat",
+        // backgroundRepeat: "no-repeat",
         color: "green",
         textAlign: "center"
     };

@@ -58,7 +58,7 @@ function postprocess(query, res) {
     connectToDB.mysqldb.query(query, (err, data) => {
         (err) ? res.status(400).send(err) : res.format({
             'application/json': function () {
-                res.status(201).type('application/json').send(data)
+                res.status(200).type('application/json').send(data)
             }
         })
     })

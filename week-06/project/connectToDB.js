@@ -39,15 +39,15 @@ exports.connectToDB = function () {
 
         [createTablePosts, createTableComments].forEach(query => executeSQLquery(query));
 
-        let insertInitialPosts = `INSERT INTO posts (id, title, url, score, owner, vote) VALUES 
-      (25, "Dear JavaScript", "http://9gag.com", 791, null, 1),
-      (74, "Crockford", "http://9gag.com", 567, "kristof4", -1)
+        let insertInitialPosts = `INSERT INTO posts (title, url, score, owner, vote) VALUES 
+      ("Dear JavaScript", "http://9gag.com", 791, null, 1),
+      ("Crockford", "http://9gag.com", 567, "kristof4", -1)
     `;
 
-        let insertInitialComments = `INSERT INTO comments (id, postId, text, score, owner) VALUES 
-      (17, 25, "Yes it is!", 12, "someone"),
-      (22, 25, "No it's not!", 9, "someoneelse"),
-      (11, 25, "That's a good post", 8, "someone");
+        let insertInitialComments = `INSERT INTO comments (postId, text, score, owner) VALUES 
+      (1, "Yes it is!", 12, "someone"),
+      (1, "No it's not!", 9, "someoneelse"),
+      (1, "That's a good post", 8, "someone");
       `;
 
         let checkIfEmptyPosts = `SELECT * FROM posts`;
