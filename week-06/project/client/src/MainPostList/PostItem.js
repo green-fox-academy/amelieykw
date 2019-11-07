@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import * as Status from './status.js';
-
 import { actions as mainPostListActions } from './';
 
 import "./css/PostItem.css";
@@ -27,7 +25,6 @@ class PostItem extends React.Component {
                         </h2>
                     </div>
                 </div>
-                {/* <p>{score}</p> */}
             </li>
         )
     };

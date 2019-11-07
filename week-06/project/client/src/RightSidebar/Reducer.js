@@ -1,14 +1,24 @@
-import * as ActionTypes from './ActionTypes.js';
+import {FETCH_STARTED, FETCH_SUCCESS, FETCH_FAILURE } from '../mainHelper/ActionTypes';
+import { SEND_FORM } from './ActionTypes';
+import * as Status from '../status';
 
-export default (state, action) => {
-  const {counterCaption} = action;
-
+export default (state = { status: Status.LOADING }, action) => {
   switch (action.type) {
-    case ActionTypes.INCREMENT:
-      return {...state, [counterCaption]: state[counterCaption] + 1};
-    case ActionTypes.DECREMENT:
-      return {...state, [counterCaption]: state[counterCaption] - 1};
-    default:
-      return state
+    case FETCH_STARTED: {
+      return {status: Status.LOADING};
+    }
+    case FETCH_FAILURE: {
+      return {status: Status.FAILURE};
+    }
+    case FETCH_SUCCESS: {
+      return {...state, ...action.result, status: Status.SUCCESS};
+    }
+    case SEND_FORM: {    
+        console.log(action.result);  
+        return {...state, status: Status.SUCCESS};
+    }
+    default: {
+      return state;
+    }
   }
 }

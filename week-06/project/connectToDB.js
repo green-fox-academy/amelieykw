@@ -39,9 +39,9 @@ exports.connectToDB = function () {
 
         [createTablePosts, createTableComments].forEach(query => executeSQLquery(query));
 
-        let insertInitialPosts = `INSERT INTO posts (title, url, score, owner, vote) VALUES 
-      ("Dear JavaScript", "http://9gag.com", 791, null, 1),
-      ("Crockford", "http://9gag.com", 567, "kristof4", -1)
+        let insertInitialPosts = `INSERT INTO posts (title, url, timestamp, score, owner, vote) VALUES 
+      ("Dear JavaScript", "http://9gag.com", NOW(), 791, null, 1),
+      ("Crockford", "http://9gag.com", NOW(), 567, "kristof4", -1)
     `;
 
         let insertInitialComments = `INSERT INTO comments (postId, text, score, owner) VALUES 

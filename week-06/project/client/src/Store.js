@@ -3,16 +3,16 @@ import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk'
 
 import {reducer as mainPostListReducer} from './MainPostList';
-// import {reducer as rightSidebarReducer} from './RightSidebar';
+import {reducer as rightSidebarReducer} from './RightSidebar';
 
-// import Perf from 'react-addons-perf'
+// import Perf from 'react-addons-perf';
 
 // const win = window;
 // win.Perf = Perf
 
 const reducer = combineReducers({
   mainPostList: mainPostListReducer,
-  // rightSidebar: rightSidebarReducer
+  rightSidebar: rightSidebarReducer
 });
 
 const middlewares = [thunkMiddleware];

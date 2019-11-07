@@ -1,4 +1,1 @@
-export const INCREMENT = 'increment';
-
-export const DECREMENT = 'decrement';
-
+export const SEND_FORM = 'POSTS/SEND_FORM';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as Status from './status.js';
+import * as Status from '../status';
 
 import { actions as mainPostListActions } from './';
 import PostItem from './PostItem.js';
@@ -12,7 +12,6 @@ let mainPostListStyle = {
     margin: 0,
     marginRight: "2%",
     height: "auto",
-    border: "1px solid red"
 };
 
 class MainPostList extends React.Component {

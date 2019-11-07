@@ -1,27 +1,14 @@
-import { FETCH_STARTED, FETCH_SUCCESS, FETCH_UPDATE, FETCH_FAILURE } from './ActionTypes.js';
-
-export const fetchStarted = () => ({
-  type: FETCH_STARTED
-});
-
-export const fetchSuccess = (result) => ({
-  type: FETCH_SUCCESS,
-  result
-})
+import { fetchStarted, fetchSuccess, fetchFailure } from '../mainHelper/Actions';
+import { FETCH_UPDATE } from './ActionTypes.js';
 
 export const fetchUpdate = (update) => ({
   type: FETCH_UPDATE,
   update
 })
 
-export const fetchFailure = (error) => ({
-  type: FETCH_FAILURE,
-  error
-})
-
 export const fetchAllPosts = () => {
   return (dispatch) => {
-    let allPostsUrl = `/posts`;
+    let allPostsUrl = `http://localhost:3001/posts`;
 
     dispatch(fetchStarted())
 
